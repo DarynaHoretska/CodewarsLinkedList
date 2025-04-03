@@ -5,14 +5,12 @@ class Node:
 
 def linked_list_from_string(s):
     head = None
-    tail = None
-    for el in s.split():
-        if el != '->' and el != 'None':
-            new_node = Node(el)
-            if head is None:
-                head = new_node
-                tail = new_node
-            else:
-                tail.next = new_node
-                tail = new_node
+    for i in s.split(' -> ')[:-1]:
+        node = Node(int(i))
+        if head is None:
+            head = node
+            cur = node
+        else:
+            cur.next = node
+            cur = node
     return head
